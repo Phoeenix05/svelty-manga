@@ -1,2 +1,10 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import { goto } from '$app/navigation'
+
+	let search_query = ''
+	const search = () => goto(`/search/${search_query}`)
+    $: console.log(search_query)
+</script>
+
+<input type="text" bind:value={search_query} />
+<button on:click={search}>Search</button>
