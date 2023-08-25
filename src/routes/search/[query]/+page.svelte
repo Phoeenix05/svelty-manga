@@ -4,3 +4,4 @@
 </script>
 
 <p>{data.query}</p>
+<pre>{JSON.stringify(data.results, null, 2)}</pre>
