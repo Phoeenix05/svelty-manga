@@ -1,3 +1,4 @@
+import type { Manga } from '$lib/mangadex'
 import type { PageLoad } from './$types'
 
 export const load: PageLoad = async ({ params, fetch }) => {
@@ -5,9 +6,10 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	url.searchParams.append('title', params.query)
 	url.searchParams.append('includes[]', 'cover_art')
 	const response = await fetch(url)
+	const json: Manga = await response.json()
 
 	return {
 		query: params.query,
-		results: response.json()
+		results: json
 	}
 }
